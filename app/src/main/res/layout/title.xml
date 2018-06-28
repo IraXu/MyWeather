@@ -5,7 +5,7 @@
     android:layout_height="?attr/actionBarSize">
 
 
-    <!--用于显示城市名-->
+    <!--用于显示侧滑菜单-->
     <Button
         android:id="@+id/nav_button"
         android:layout_width="30dp"
