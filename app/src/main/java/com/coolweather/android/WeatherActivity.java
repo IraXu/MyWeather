@@ -5,13 +5,17 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -52,6 +56,9 @@ public class WeatherActivity extends AppCompatActivity {
     private String mWeatherId;
     public DrawerLayout drawerLayout;
     private Button navButton;
+    private long exitTime = 0;
+
+
 
 
     @Override
@@ -84,6 +91,9 @@ public class WeatherActivity extends AppCompatActivity {
         swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         navButton = (Button)findViewById(R.id.nav_button);
+
+        NavigationView navView = (NavigationView)findViewById(R.id.nav_view);
+
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String weatherString = prefs.getString("weather",null);
         if (weatherString !=null){
@@ -118,6 +128,32 @@ public class WeatherActivity extends AppCompatActivity {
         }else {
             loadBingPic();
         }
+
+        //侧滑菜单页面的跳转
+        navView.setCheckedItem(R.id.thanks);
+        navView.setCheckedItem(R.id.aboutme);
+        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+
+                    case R.id.aboutme:
+                        Intent intent = new Intent(WeatherActivity.this,AboutActivity.class);
+                        startActivity(intent);
+                        break;
+
+
+                    case R.id.thanks:
+                        startActivity(new Intent(WeatherActivity.this,ThanksActivity.class));
+                        break;
+
+
+                }
+                return false;
+
+            }
+        });
+
 
     }
 
@@ -240,4 +276,26 @@ public class WeatherActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AutoUpdateService.class);
         startService(intent);
     }
+
+
+    //连按两次返回键退出程序
+    //实现方法：通过记录按键时间 计算时间差
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event){
+        if (keyCode ==KeyEvent.KEYCODE_BACK){
+            exit();
+            return false;
+        }
+        return super.onKeyDown(keyCode,event);
+    }
+    public void exit(){
+        if ((System.currentTimeMillis()-exitTime)>2000){
+            Toast.makeText(getApplicationContext(),"再按一次退出程序",Toast.LENGTH_SHORT).show();
+            exitTime = System.currentTimeMillis();
+        }else{
+            finish();
+            System.exit(0);
+        }
+    }
+
 }
