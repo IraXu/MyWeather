@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:lineSpacingExtra="3dp"
-            android:text="我的天气是一款简约而不简单的天气软件，完美遵循着Google的Material Design设计规范。诞生于2018年的2个实训周，现已在github上开源。" />
+            android:text="我的天气是一款简约又简单的天气软件，完美遵循着Google的Material Design设计规范。诞生于2018年的2个实训周，现已在github上开源。" />
 
         <View
             android:layout_width="match_parent"
