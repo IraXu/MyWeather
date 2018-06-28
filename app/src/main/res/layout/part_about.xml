@@ -76,7 +76,7 @@
             android:layout_marginStart="6dp"
             android:lineSpacingExtra="3dp"
             android:autoLink="web"
-            android:text="https://github.com/Luur/MyWeather" />
+            android:text="https://github.com/Luuur/MyWeather" />
 
         <View
             android:layout_width="match_parent"
