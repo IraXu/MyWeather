@@ -6,5 +6,5 @@ package com.coolweather.android;
  */
 
 
-public class CityAdapter {
+public class CityAdapter extends MainActivity{
 }
