@@ -26,4 +26,11 @@
  
  <br />
  
-###功能完善中....
+### 更多功能仍在完善中....
+
+<br />
+
+
+### 介绍图
+![图片不存在](https://github.com/Luuur/MyWeather/blob/master/detailimage/Detail.png)
+
