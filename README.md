@@ -30,5 +30,5 @@
 
 
 ### 介绍图
-![图片不存在](https://github.com/Luuur/MyWeather/blob/master/detailimage/Detail.png）
+![图片不存在](https://github.com/Luuur/MyWeather/blob/master/detailimage/Detail.png)
 
